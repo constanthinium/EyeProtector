@@ -1,7 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "blackwindow.h"
+
 #include <QMainWindow>
+#include <QWindow>
 #include <QTimer>
 #include <QTime>
 
@@ -20,7 +23,12 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    void timerTick();
     QTime elapsedTime;
+    BlackWindow *blackWindow;
+
+    const QTime workTime = QTime(0, 20);
+    const QTime breakTime = QTime(0, 0, 20);
+
+    void timerTick();
 };
 #endif // MAINWINDOW_H

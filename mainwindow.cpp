@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    blackWindow = new BlackWindow;
     ui->label->setStyleSheet("color: green");
-    elapsedTime = QTime(0, 20);
-
+    elapsedTime = workTime;
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::timerTick);
     timer->start(1000);
@@ -24,4 +24,18 @@ void MainWindow::timerTick()
 {
     elapsedTime = elapsedTime.addSecs(-1);
     ui->timeLabel->setText(elapsedTime.toString("mm:ss"));
+
+    if (elapsedTime.minute() * 60 + elapsedTime.second() == 0)
+    {
+        if (blackWindow->isHidden())
+        {
+            blackWindow->showMaximized();
+            elapsedTime = breakTime;
+        }
+        else
+        {
+            blackWindow->hide();
+            elapsedTime = workTime;
+        }
+    }
 }
