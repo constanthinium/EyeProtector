@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     blackWindow = new BlackWindow;
     ui->label->setStyleSheet("color: green");
     elapsedTime = workTime;
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::timerTick);
     timer->start(1000);
 }

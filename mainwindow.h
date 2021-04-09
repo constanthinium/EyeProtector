@@ -25,6 +25,7 @@ private:
 
     QTime elapsedTime;
     BlackWindow *blackWindow;
+    QTimer *timer;
 
     const QTime workTime = QTime(0, 20);
     const QTime breakTime = QTime(0, 0, 20);
