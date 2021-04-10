@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    QApplication::beep();
     blackWindow = new BlackWindow;
     ui->label->setStyleSheet("color: green");
     elapsedTime = workTime;
@@ -29,7 +30,7 @@ void MainWindow::timerTick()
     {
         if (blackWindow->isHidden())
         {
-            blackWindow->showMaximized();
+            blackWindow->showFullScreen();
             elapsedTime = breakTime;
         }
         else
